@@ -1,26 +1,25 @@
 #include <unistd.h>
-
-
-
-char *itoa(int num);
+#include "main.h"
 
 /**
  * print_char - Print a character.
- * @char_count: A pointer to the character count.
  * @c: The character to print.
+ *
+ * Return: The number of characters printed (1).
  */
-void print_char(int *char_count, char c)
+int print_char(char c)
 {
 	write(1, &c, 1);
-	(*char_count)++;
+	return (1);
 }
 
 /**
  * print_string - Print a string.
- * @char_count: A pointer to the character count.
  * @str: The string to print.
+ *
+ * Return: The number of characters printed (excluding the null byte).
  */
-void print_string(int *char_count, char *str)
+int print_string(const char *str)
 {
 	int len = 0;
 
@@ -29,15 +28,16 @@ void print_string(int *char_count, char *str)
 		len++;
 	}
 	write(1, str, len);
-	(*char_count) += len;
+	return (len);
 }
 
 /**
  * print_int - Print an integer.
- * @char_count: A pointer to the character count.
  * @num: The integer to print.
+ *
+ * Return: The number of characters printed.
  */
-void print_int(int *char_count, int num)
+int print_int(int num)
 {
 	char *num_str = itoa(num);
 	int length = 0;
@@ -48,5 +48,5 @@ void print_int(int *char_count, int num)
 	}
 
 	write(1, num_str, length);
-	(*char_count) += length;
+	return (length);
 }
