@@ -11,8 +11,8 @@ char *itoa(int num);
  */
 void print_char(int *char_count, char c)
 {
-    write(1, &c, 1);
-    (*char_count)++;
+	write(1, &c, 1);
+	(*char_count)++;
 }
 
 /**
@@ -22,14 +22,14 @@ void print_char(int *char_count, char c)
  */
 void print_string(int *char_count, char *str)
 {
-    int len = 0;
+	int len = 0;
 
-    while (str[len] != '\0')
-    {
-   	 len++;
-    }
-    write(1, str, len);
-    (*char_count) += len;
+	while (str[len] != '\0')
+	{
+		len++;
+	}
+	write(1, str, len);
+	(*char_count) += len;
 }
 
 /**
@@ -39,14 +39,14 @@ void print_string(int *char_count, char *str)
  */
 void print_int(int *char_count, int num)
 {
-    char *num_str = itoa(num);
-    int length = 0;
+	char *num_str = itoa(num);
+	int length = 0;
 
-    while (num_str[length] != '\0')
-    {
-   	 length++;
-    }
+	while (num_str[length] != '\0')
+	{
+		length++;
+	}
 
-    write(1, num_str, length);
-    (*char_count) += length;
+	write(1, num_str, length);
+	(*char_count) += length;
 }
