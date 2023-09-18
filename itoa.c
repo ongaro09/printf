@@ -3,11 +3,11 @@
 /**
  * itoa - Converts an integer to a null-terminated string.
  * @num: The integer to convert.
+ * @output_len: A pointer to store the length of the resulting string.
  *
  * Return: A pointer to the resulting string.
  */
-
-char *itoa(int num)
+char *itoa(int num, int *output_len)
 {
 	int i, j;
 	static char buf[12];
@@ -17,6 +17,7 @@ char *itoa(int num)
 
 	if (num == -2147483648)
 	{
+		*output_len = 11;
 		return ("-2147483648");
 	}
 	else if (num < 0)
@@ -41,8 +42,11 @@ char *itoa(int num)
 		char temp = buf[j];
 
 		buf[j] = buf[length - j - 1];
+
 		buf[length - j - 1] = temp;
 	}
+
 	buf[length] = '\0';
+	*output_len = length;
 	return (buf);
 }
