@@ -23,6 +23,7 @@ void print_char(int *char_count, char c)
 void print_string(int *char_count, char *str)
 {
 	int len = 0;
+
 	while (str[len] != '\0')
 	{
 		len++;
@@ -40,6 +41,7 @@ void print_int(int *char_count, int num)
 {
 	char *num_str = itoa(num);
 	int length = 0;
+
 	while (num_str[length] != '\0')
 	{
 		length++;
