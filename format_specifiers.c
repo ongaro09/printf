@@ -20,11 +20,12 @@ int write_char(int c)
 	return (1);
 }
 
+
 /**
  * write_string - Write a string.
  * @str: The string to write.
  *
- * Return: The number of characters written.
+ * Return: The number of characters written (excluding the null byte).
  */
 int write_string(const char *str)
 {
@@ -38,11 +39,13 @@ int write_string(const char *str)
 	return (len);
 }
 
+
+
 /**
  * write_integer - Write an integer.
  * @num: The integer to write.
  *
- * Return: The number of characters written.
+ * Return: The number of characters written (excluding the null byte).
  */
 int write_integer(int num)
 {
@@ -56,6 +59,8 @@ int write_integer(int num)
 	write(1, num_str, length);
 	return (length);
 }
+
+
 
 /**
  * format_specifier - Process a format specifier.
