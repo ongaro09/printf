@@ -2,11 +2,11 @@
 #define MY_PRINTF_H
 
 #include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
 
 int _printf(const char *format, ...);
-int print_char(int *char_count, char c);
-int print_string(int *char_count, const char *str);
+char *itoa(int num);
+void print_char(int *char_count, char c);
+void print_string(int *char_count, char *str);
+void print_int(int *char_count, int num);
 
 #endif
