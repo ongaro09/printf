@@ -14,26 +14,28 @@ int write_integer(int num);
  */
 int write_char(int c)
 {
-    char ch = c;
-    write(1, &ch, 1);
-    return (1);
+	char ch = c;
+
+	write(1, &ch, 1);
+	return (1);
 }
 
 /**
  * write_string - Write a string.
  * @str: The string to write.
- *
+ *i
  * Return: The number of characters written.
  */
 int write_string(const char *str)
 {
-    int len = 0;
-    while (str[len] != '\0')
-    {
-        len++;
-    }
-    write(1, str, len);
-    return (len);
+	int len = 0;
+
+	while (str[len] != '\0')
+	{
+		len++;
+	}
+	write(1, str, len);
+	return (len);
 }
 
 /**
@@ -44,15 +46,15 @@ int write_string(const char *str)
  */
 int write_integer(int num)
 {
-    char *num_str = itoa(num);
-    int length = 0;
+	char *num_str = itoa(num);
+	int length = 0;
 
-    while (num_str[length] != '\0')
-    {
-        length++;
-    }
-    write(1, num_str, length);
-    return (length);
+	while (num_str[length] != '\0')
+	{
+		length++;
+	}
+	write(1, num_str, length);
+	return (length);
 }
 
 /**
@@ -65,34 +67,33 @@ int write_integer(int num)
  */
 int format_specifier(const char **format, va_list args, int *char_count)
 {
-    int chars_written = 0;
-    if (**format == 'c')
-    {
-        char c = va_arg(args, int);
-        chars_written = write_char(c);
-    }
-    else if (**format == 's')
-    {
-        char *str = va_arg(args, char *);
-        chars_written = write_string(str);
-    }
-    else if (**format == '%')
-    {
-        chars_written = write_char('%');
-    }
-    else if (**format == 'd' || **format == 'i')
-    {
-        int num = va_arg(args, int);
-        chars_written = write_integer(num);
-    }
-    else
-    {
-        write(1, "%", 1);
-        write(1, *format, 1);
-        *char_count += 2;
-        return (2);
-    }
+	if (**format == 'c')
+	{
+		char c = va_arg(args, int);
 
-    *char_count += chars_written;
-    return (chars_written);
+		return (write_char(c));
+	}
+	else if (**format == 's')
+	{
+		char *str = va_arg(args, char *);
+
+		return (write_string(str));
+	}
+	else if (**format == '%')
+	{
+		return (write_char('%'));
+	}
+	else if (**format == 'd' || **format == 'i')
+	{
+		int num = va_arg(args, int);
+
+		return (write_integer(num));
+	}
+	else
+	{
+		write(1, "%", 1);
+		write(1, *format, 1);
+		*char_count += 2;
+		return (2);
+	}
 }
